@@ -27,38 +27,74 @@
         .separator {
             margin: 0 10px;
         }
+        #password-prompt {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
     <script>
-        function handleFormSubmit(action) {
-            return function(event) {
-                event.preventDefault();
-                window.location.href = action;
+        function checkPassword() {
+            var password = prompt("Please enter the password:");
+            if (password === 'jettsocute') {
+                document.getElementById('main-content').style.display = 'block';
+                document.getElementById('password-prompt').style.display = 'none';
+            } else {
+                alert('Incorrect password');
+                window.location.reload();
             }
         }
+
         window.onload = function() {
-            document.querySelector('form[action="/github"]').onsubmit = handleFormSubmit('https://github.com/jettsocute/t3xture');
-            document.querySelector('form[action="/server"]').onsubmit = handleFormSubmit('https://dashboard.render.com');
-            document.querySelector('form[action="/cronjobs"]').onsubmit = handleFormSubmit('https://console.cron-job.org/jobs');
-            document.querySelector('form[action="/t3xture=command"]').onsubmit = handleFormSubmit('https://t3xture.onrender.com/controller');
-        }
+            checkPassword();
+
+            document.querySelector('form[action="/github"]').onsubmit = function(event) {
+                event.preventDefault();
+                window.location.href = "https://github.com/jettsocute/t3xture";
+            };
+            document.querySelector('form[action="/server"]').onsubmit = function(event) {
+                event.preventDefault();
+                window.location.href = "https://dashboard.render.com";
+            };
+            document.querySelector('form[action="/cronjobs"]').onsubmit = function(event) {
+                event.preventDefault();
+                window.location.href = "https://console.cron-job.org/jobs";
+            };
+            document.querySelector('form[action="/t3xture=command"]').onsubmit = function(event) {
+                event.preventDefault();
+                window.location.href = "https://t3xture.onrender.com/controller";
+            };
+        };
     </script>
 </head>
 <body>
-    <div class="header">Jett Sunwoo Han</div>
-    <div class="button-container">
-        <form action="/github">
-            <input type="submit" value="Database">
-        </form>
-        <form action="/server">
-            <input type="submit" value="Server">
-        </form>
-        <form action="/cronjobs">
-            <input type="submit" value="Host">
-        </form>
-        <span class="separator">|</span>
-        <form action="/t3xture=command">
-            <input type="submit" value="T3xture">
-        </form>
+    <div id="password-prompt">
+        <p>Please enter the password to access the content:</p>
+        <input type="password" id="password-input">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+    <div id="main-content" style="display: none;">
+        <div class="header">Jett Sunwoo Han</div>
+        <div class="button-container">
+            <form action="/github">
+                <input type="submit" value="Database">
+            </form>
+            <form action="/server">
+                <input type="submit" value="Server">
+            </form>
+            <form action="/cronjobs">
+                <input type="submit" value="Host">
+            </form>
+            <span class="separator">|</span>
+            <form action="/t3xture=command">
+                <input type="submit" value="T3xture">
+            </form>
+        </div>
     </div>
 </body>
 </html>
