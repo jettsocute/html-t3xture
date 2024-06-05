@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.jammable.com/_next/image?url=https%3A%2F%2Fimagecdn.voicify.ai%2Fmodels%2F93577589-eb80-4e0f-8bfa-ce09df63c8d3.png&w=3840&q=100" type="image/x-icon">
+    <title>ทำไมน้องเจ็ทน่ารักจัง</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            font-family: 'Segoe Script', cursive;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+        .button-container form {
+            margin: 0;
+        }
+        .separator {
+            margin: 0 10px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            if (window.location.pathname === '/t3xture=command') {
+                window.location.href = "https://t3xture.onrender.com/controller";
+            } else if (window.location.pathname === '/server') {
+                window.location.href = "https://dashboard.render.com";
+            } else if (window.location.pathname === '/github') {
+                window.location.href = "https://github.com/jettsocute/t3xture";
+            } else if (window.location.pathname === '/cronjobs') {
+                window.location.href = "https://console.cron-job.org/jobs";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">Jett Sunwoo Han</div>
+    <div class="button-container">
+        <form action="/github">
+            <input type="submit" value="Database">
+        </form>
+        <form action="/server">
+            <input type="submit" value="Server">
+        </form>
+        <form action="/cronjobs">
+            <input type="submit" value="Host">
+        </form>
+        <span class="separator">|</span>
+        <form action="/t3xture=command">
+            <input type="submit" value="T3xture">
+        </form>
+    </div>
+</body>
+</html>
