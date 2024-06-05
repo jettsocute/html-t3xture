@@ -27,32 +27,9 @@
         .separator {
             margin: 0 10px;
         }
-        #password-prompt {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
     </style>
     <script>
-        function checkPassword() {
-            var password = prompt("Please enter the password:");
-            if (password === 'jettsocute') {
-                document.getElementById('main-content').style.display = 'block';
-                document.getElementById('password-prompt').style.display = 'none';
-            } else {
-                alert('Incorrect password');
-                window.location.reload();
-            }
-        }
-
         window.onload = function() {
-            checkPassword();
-
             document.querySelector('form[action="/github"]').onsubmit = function(event) {
                 event.preventDefault();
                 window.location.href = "https://github.com/jettsocute/t3xture";
@@ -73,28 +50,21 @@
     </script>
 </head>
 <body>
-    <div id="password-prompt">
-        <p>Please enter the password to access the content:</p>
-        <input type="password" id="password-input">
-        <button onclick="checkPassword()">Submit</button>
-    </div>
-    <div id="main-content" style="display: none;">
-        <div class="header">Jett Sunwoo Han</div>
-        <div class="button-container">
-            <form action="/github">
-                <input type="submit" value="Database">
-            </form>
-            <form action="/server">
-                <input type="submit" value="Server">
-            </form>
-            <form action="/cronjobs">
-                <input type="submit" value="Host">
-            </form>
-            <span class="separator">|</span>
-            <form action="/t3xture=command">
-                <input type="submit" value="T3xture">
-            </form>
-        </div>
+    <div class="header">Jett Sunwoo Han</div>
+    <div class="button-container">
+        <form action="/github">
+            <input type="submit" value="Database">
+        </form>
+        <form action="/server">
+            <input type="submit" value="Server">
+        </form>
+        <form action="/cronjobs">
+            <input type="submit" value="Host">
+        </form>
+        <span class="separator">|</span>
+        <form action="/t3xture=command">
+            <input type="submit" value="T3xture">
+        </form>
     </div>
 </body>
 </html>
