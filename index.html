@@ -29,16 +29,17 @@
         }
     </style>
     <script>
-        window.onload = function() {
-            if (window.location.pathname === '/t3xture=command') {
-                window.location.href = "https://t3xture.onrender.com/controller";
-            } else if (window.location.pathname === '/server') {
-                window.location.href = "https://dashboard.render.com";
-            } else if (window.location.pathname === '/github') {
-                window.location.href = "https://github.com/jettsocute/t3xture";
-            } else if (window.location.pathname === '/cronjobs') {
-                window.location.href = "https://console.cron-job.org/jobs";
+        function handleFormSubmit(action) {
+            return function(event) {
+                event.preventDefault();
+                window.location.href = action;
             }
+        }
+        window.onload = function() {
+            document.querySelector('form[action="/github"]').onsubmit = handleFormSubmit('https://github.com/jettsocute/t3xture');
+            document.querySelector('form[action="/server"]').onsubmit = handleFormSubmit('https://dashboard.render.com');
+            document.querySelector('form[action="/cronjobs"]').onsubmit = handleFormSubmit('https://console.cron-job.org/jobs');
+            document.querySelector('form[action="/t3xture=command"]').onsubmit = handleFormSubmit('https://t3xture.onrender.com/controller');
         }
     </script>
 </head>
