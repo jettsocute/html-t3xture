@@ -46,6 +46,18 @@
                 event.preventDefault();
                 window.location.href = "https://t3xture.onrender.com/controller";
             };
+            document.querySelector('form[action="/dis=dev"]').onsubmit = function(event) {
+                event.preventDefault();
+                window.location.href = "https://discord.com/developers/applications/1141835087642624062/information";
+            };
+            document.querySelector('form[action="/html=t3xture"]').onsubmit = function(event) {
+                event.preventDefault();
+                window.location.href = "https://github.com/jettsocute/html-t3xture";
+            };
+            document.querySelector('form[action="/html=t3xture"]').onsubmit = function(event) {
+                event.preventDefault();
+                window.location.href = "https://github.com/jettsocute/t3xture-photo";
+            };
         };
     </script>
 </head>
@@ -61,7 +73,18 @@
         <form action="/cronjobs">
             <input type="submit" value="Host">
         </form>
+        <form action="/dis=dev">
+            <input type="submit" value="Host">
+        </form>
+        <form action="/html=t3xture">
+            <input type="submit" value="Host">
+        </form>
+        <form action="/t3xture-photo">
+            <input type="submit" value="Host">
+        </form>
+        
         <span class="separator">|</span>
+        
         <form action="/t3xture=command">
             <input type="submit" value="T3xture">
         </form>
