@@ -30,6 +30,7 @@
             align-items: center;
             gap: 10px;
             display: none;
+            margin-left: 20px;
         }
         .button-container form {
             margin: 0;
@@ -86,7 +87,7 @@
             passwordForm.onsubmit = function(event) {
                 event.preventDefault();
                 if (isLocked) {
-                    alert("คุณถูกล็อคชั่วคราว กรุณารอซักครู่แล้วลองใหม่อีกครั้ง");
+                    alert("กรุณารอซักครู่แล้วลองใหม่อีกครั้ง");
                     return;
                 }
                 if (passwordInput.value === correctPassword) {
@@ -96,13 +97,13 @@
                     attempts++;
                     if (attempts >= maxAttempts) {
                         isLocked = true;
-                        alert(`คุณพยายามใส่รหัสผ่านผิดเกินจำนวนครั้งที่กำหนด คุณจะถูกล็อคชั่วคราว ${lockoutTime / 1000} วินาที`);
+                        alert(`กรุณารอซักครู่แล้วลองใหม่อีกครั้ง!`);
                         lockoutTimer = setTimeout(function() {
                             isLocked = false;
                             attempts = 0;
                         }, lockoutTime);
                     } else {
-                        alert("รหัสผ่านไม่ถูกต้อง");
+                        alert("รหัสผ่านไม่ถูกต้อง!");
                     }
                 }
             };
