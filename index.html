@@ -53,7 +53,7 @@
             text-shadow: 0 0 4px #0fc7ff;
             font-family: Arial, sans-serif;
         }
-        .password-container input[type="password"] {
+        .password-container input[type="password"], .password-container input[type="text"] {
             border: 2px solid #0fc7ff;
             border-radius: 10px;
             padding: 5px;
@@ -70,6 +70,7 @@
     </style>
     <script>
         window.onload = function() {
+            const correctUsername = "";
             const correctPassword = "jett";
             const maxAttempts = 3;
             const lockoutTime = 72000000;
@@ -78,6 +79,7 @@
             let lockoutTimer;
 
             const passwordForm = document.getElementById("passwordForm");
+            const usernameInput = document.getElementById("usernameInput");
             const passwordInput = document.getElementById("passwordInput");
             const buttonContainer = document.querySelector(".button-container");
             const passwordContainer = document.querySelector(".password-container");
@@ -90,7 +92,7 @@
                     alert("กรุณารอซักครู่แล้วลองใหม่อีกครั้ง");
                     return;
                 }
-                if (passwordInput.value === correctPassword) {
+                if (usernameInput.value === correctUsername && passwordInput.value === correctPassword) {
                     passwordContainer.style.display = "none";
                     buttonContainer.style.display = "flex";
                 } else {
@@ -103,7 +105,7 @@
                             attempts = 0;
                         }, lockoutTime);
                     } else {
-                        alert("รหัสผ่านไม่ถูกต้อง!");
+                        alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!");
                     }
                 }
             };
@@ -143,6 +145,8 @@
     <div class="header">Jett Sunwoo Han</div>
     <div class="password-container">
         <form id="passwordForm">
+            <label for="usernameInput">Enter Username:</label>
+            <input type="text" id="usernameInput" required>
             <label for="passwordInput">Enter Password:</label>
             <input type="password" id="passwordInput" required>
             <input type="submit" value="Submit">
