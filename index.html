@@ -70,7 +70,6 @@
     </style>
     <script>
         window.onload = function() {
-            const correctUsername = "";
             const correctPassword = "jett";
             const maxAttempts = 3;
             const lockoutTime = 72000000;
@@ -79,7 +78,6 @@
             let lockoutTimer;
 
             const passwordForm = document.getElementById("passwordForm");
-            const usernameInput = document.getElementById("usernameInput");
             const passwordInput = document.getElementById("passwordInput");
             const buttonContainer = document.querySelector(".button-container");
             const passwordContainer = document.querySelector(".password-container");
@@ -145,11 +143,15 @@
     <div class="header">Jett Sunwoo Han</div>
     <div class="password-container">
         <form id="passwordForm">
-            <label for="usernameInput">Enter Username:</label>
-            <input type="text" id="usernameInput" required>
-            <label for="passwordInput">Enter Password:</label>
-            <input type="password" id="passwordInput" required>
-            <input type="submit" value="Submit">
+            <div class="input-group">
+                <label for="usernameInput">Enter Username:</label>
+                <input type="text" id="usernameInput" required>
+            </div>
+            <div class="input-group">
+                <label for="passwordInput">Enter Password:</label>
+                <input type="password" id="passwordInput" required>
+                <input type="submit" value="Submit">
+            </div>
         </form>
     </div>
     <div class="button-container">
