@@ -35,6 +35,9 @@
         .button-container form {
             margin: 0;
         }
+        .password-container {
+            margin-bottom: 20px;
+        }
         .button-container input[type="submit"], .password-container input[type="submit"] {
             font-family: 'Roboto Mono', monospace;
             border: 2px solid #0fc7ff;
@@ -70,7 +73,7 @@
     </style>
     <script>
         window.onload = function() {
-            const correctPassword = "jett";
+            const correctPassword = "nongjett";
             const maxAttempts = 3;
             const lockoutTime = 72000000;
             let attempts = 0;
@@ -145,7 +148,6 @@
         <form id="passwordForm">
             <div class="input-group">
                 <label for="usernameInput">Enter Username:</label>
-                <input type="text" id="usernameInput" required>
             </div>
             <div class="input-group">
                 <label for="passwordInput">Enter Password:</label>
