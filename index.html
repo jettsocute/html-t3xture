@@ -25,6 +25,7 @@
             align-items: center;
             gap: 10px;
             margin-left: 20px;
+            display: none; /* Hide initially */
         }
         .button-container form {
             margin: 0;
@@ -48,12 +49,12 @@
             font-family: Arial, sans-serif;
         }
         .password-container {
-            display: none;
+            margin-left: 50px;
         }
     </style>
     <script>
         window.onload = function() {
-            const correctPassword = "jett";
+            const correctPassword = "your_password";  // เปลี่ยนรหัสผ่านที่นี่
             const passwordForm = document.getElementById("passwordForm");
             const passwordInput = document.getElementById("passwordInput");
             const buttonContainer = document.querySelector(".button-container");
@@ -109,7 +110,7 @@
             <input type="submit" value="Submit">
         </form>
     </div>
-    <div class="button-container" style="display: none;">
+    <div class="button-container">
         <form action="/html=t3xture">
             <input type="submit" value="Database HTML">
         </form>
