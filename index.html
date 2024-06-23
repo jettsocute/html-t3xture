@@ -9,6 +9,7 @@
     <style>
         body {
             background-color: #ffffff;
+            font-family: 'Roboto Mono', monospace;
         }
         .header {
             font-family: 'Segoe Script', cursive;
@@ -18,19 +19,21 @@
             text-shadow: 0 0 4px #0fc7ff;
             margin-left: 50px;
         }
+        .button-container, .password-container {
+            margin-left: 50px;
+            display: none;
+        }
         .button-container {
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
             gap: 10px;
-            margin-left: 20px;
-            display: none; /* Hide initially */
         }
         .button-container form {
             margin: 0;
         }
-        .button-container input[type="submit"] {
+        .button-container input[type="submit"], .password-container input[type="submit"] {
             font-family: 'Roboto Mono', monospace;
             border: 2px solid #0fc7ff;
             color: #0fc7ff;
@@ -48,25 +51,58 @@
             text-shadow: 0 0 4px #0fc7ff;
             font-family: Arial, sans-serif;
         }
-        .password-container {
-            margin-left: 50px;
+        .password-container input[type="password"] {
+            border: 2px solid #0fc7ff;
+            border-radius: 10px;
+            padding: 5px;
+            font-family: 'Roboto Mono', monospace;
+            box-shadow: 0 0 8px #0fc7ff, inset 0 0 4px #0fc7ff;
+            text-shadow: 0 0 4px #0fc7ff;
+        }
+        .password-container label {
+            color: #0fc7ff;
+            font-size: 18px;
+            text-shadow: 0 0 4px #0fc7ff;
+            margin-right: 10px;
         }
     </style>
     <script>
         window.onload = function() {
             const correctPassword = "jett";
+            const maxAttempts = 3;
+            const lockoutTime = 72000000;
+            let attempts = 0;
+            let isLocked = false;
+            let lockoutTimer;
+
             const passwordForm = document.getElementById("passwordForm");
             const passwordInput = document.getElementById("passwordInput");
             const buttonContainer = document.querySelector(".button-container");
             const passwordContainer = document.querySelector(".password-container");
 
+            passwordContainer.style.display = "block";
+
             passwordForm.onsubmit = function(event) {
                 event.preventDefault();
+                if (isLocked) {
+                    alert("คุณถูกล็อคชั่วคราว กรุณารอซักครู่แล้วลองใหม่อีกครั้ง");
+                    return;
+                }
                 if (passwordInput.value === correctPassword) {
                     passwordContainer.style.display = "none";
                     buttonContainer.style.display = "flex";
                 } else {
-                    alert("รหัสผ่านไม่ถูกต้อง");
+                    attempts++;
+                    if (attempts >= maxAttempts) {
+                        isLocked = true;
+                        alert(`คุณพยายามใส่รหัสผ่านผิดเกินจำนวนครั้งที่กำหนด คุณจะถูกล็อคชั่วคราว ${lockoutTime / 1000} วินาที`);
+                        lockoutTimer = setTimeout(function() {
+                            isLocked = false;
+                            attempts = 0;
+                        }, lockoutTime);
+                    } else {
+                        alert("รหัสผ่านไม่ถูกต้อง");
+                    }
                 }
             };
 
