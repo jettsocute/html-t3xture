@@ -87,7 +87,7 @@
             const buttonContainer = document.querySelector(".button-container");
             const passwordContainer = document.querySelector(".password-container");
 
-            const isAuthenticated = localStorage.getItem("authenticated");
+            const isAuthenticated = sessionStorage.getItem("authenticated");
 
             if (isAuthenticated) {
                 passwordContainer.style.display = "none";
