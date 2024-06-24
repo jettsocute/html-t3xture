@@ -77,7 +77,7 @@
         window.onload = function() {
             const correctPassword = "jett";
             const maxAttempts = 3;
-            const lockoutTime = 72000000; // 20 hours in milliseconds
+            const lockoutTime = 72000000; // 20ชม.
             let attempts = 0;
             let isLocked = false;
             let lockoutTimer;
@@ -96,8 +96,8 @@
                 passwordContainer.style.display = "block";
             }
             
-            localStorage.clear();
-            sessionStorage.clear();
+            // localStorage.clear();
+            // sessionStorage.clear();
     
             passwordForm.onsubmit = function(event) {
                 event.preventDefault();
