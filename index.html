@@ -103,7 +103,7 @@
                     return;
                 }
                 if (passwordInput.value === correctPassword) {
-                    localStorage.setItem("authenticated", true);
+                    sessionStorage.setItem("authenticated", true); // localStorage = เข้าสู่ระบบเสมอ
                     passwordContainer.style.display = "none";
                     buttonContainer.style.display = "flex";
                 } else {
