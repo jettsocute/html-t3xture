@@ -95,7 +95,10 @@
             } else {
                 passwordContainer.style.display = "block";
             }
-
+            
+            localStorage.clear();
+            sessionStorage.clear();
+    
             passwordForm.onsubmit = function(event) {
                 event.preventDefault();
                 if (isLocked) {
