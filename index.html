@@ -136,9 +136,20 @@
                 event.preventDefault();
                 window.location.href = "https://console.cron-job.org/jobs";
             };
+            // document.querySelector('form[action="/t3xture=command"]').onsubmit = function(event) {
+                // event.preventDefault();
+                // window.location.href = "https://t3xture.onrender.com/controller";
+            // };
+            const authToken = "jett";
+
             document.querySelector('form[action="/t3xture=command"]').onsubmit = function(event) {
                 event.preventDefault();
-                window.location.href = "https://t3xture.onrender.com/controller";
+                if (authToken) {
+                    const url = "https://t3xture.onrender.com/controller?auth_token=" + encodeURIComponent(authToken);
+                    window.location.href = url;
+                } else {
+                    alert("กรุณาตั้งค่า authToken ในโค้ดก่อนใช้งาน");
+                }
             };
             document.querySelector('form[action="/dis=dev"]').onsubmit = function(event) {
                 event.preventDefault();
