@@ -77,17 +77,16 @@
         window.onload = function() {
             const correctPassword = "jett";
             const maxAttempts = 3;
-            const lockoutTime = 72000000; // 20 hours
+            const lockoutTime = 72000000; // 20ชม.
             let attempts = 0;
             let isLocked = false;
             let lockoutTimer;
 
             const passwordForm = document.getElementById("passwordForm");
-           const passwordInput = document.getElementById("passwordInput");
+            const passwordInput = document.getElementById("passwordInput");
             const buttonContainer = document.querySelector(".button-container");
             const passwordContainer = document.querySelector(".password-container");
 
-    // Check if authenticated using sessionStorage
             const isAuthenticated = sessionStorage.getItem("authenticated");
 
             if (isAuthenticated) {
@@ -96,19 +95,10 @@
             } else {
                 passwordContainer.style.display = "block";
             }
-
-            function logout() {
-                sessionStorage.removeItem("authenticated");
-                passwordContainer.style.display = "block";
-                buttonContainer.style.display = "none";
-                passwordInput.value = "";
-            }
-            window.addEventListener("beforeunload", function(event) {
-                if (!sessionStorage.getItem("authenticated")) {
-                    sessionStorage.removeItem("authenticated");
-                }
-            });
-
+            
+            // localStorage.clear();
+            // sessionStorage.clear();
+    
             passwordForm.onsubmit = function(event) {
                 event.preventDefault();
                 if (isLocked) {
@@ -116,7 +106,7 @@
                     return;
                 }
                 if (passwordInput.value === correctPassword) {
-                    sessionStorage.setItem("authenticated", true); // Store authenticated state in sessionStorage
+                    sessionStorage.setItem("authenticated", true); // localStorage = เข้าสู่ระบบเสมอ
                     passwordContainer.style.display = "none";
                     buttonContainer.style.display = "flex";
                 } else {
@@ -133,20 +123,6 @@
                     }
                 }
             };
-
-            const logoutButton = document.getElementById("logoutButton");
-            if (logoutButton) {
-                logoutButton.addEventListener("click", logout);
-            }
-
-    // Clear authentication if no longer authenticated on page unload
-            window.addEventListener("unload", function(event) {
-                if (!sessionStorage.getItem("authenticated")) {
-                    sessionStorage.removeItem("authenticated");
-                }
-            });
-        };
-
             document.querySelector('form[action="/github"]').onsubmit = function(event) {
                 event.preventDefault();
                 window.location.href = "https://github.com/jettsocute/t3xture";
