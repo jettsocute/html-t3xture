@@ -74,10 +74,10 @@
         }
     </style>
     <script>
-        window.onload = function() {
-            const correctPassword = "jett";
+        window.onload = async function() {
+            let correctPassword;
             const maxAttempts = 3;
-            const lockoutTime = 72000000; // 20ชม.
+            const lockoutTime = 72000000; // 20 hours
             let attempts = 0;
             let isLocked = false;
             let lockoutTimer;
@@ -95,10 +95,15 @@
             } else {
                 passwordContainer.style.display = "block";
             }
-            
-            // localStorage.clear();
-            // sessionStorage.clear();
-    
+
+            try {
+                const response = await fetch('key.json');
+                const data = await response.json();
+                correctPassword = data.password;
+            } catch (error) {
+                console.error(error);
+            }
+
             passwordForm.onsubmit = function(event) {
                 event.preventDefault();
                 if (isLocked) {
@@ -123,6 +128,8 @@
                     }
                 }
             };
+
+            // For redirecting form actions to URLs
             document.querySelector('form[action="/github"]').onsubmit = function(event) {
                 event.preventDefault();
                 window.location.href = "https://github.com/jettsocute/t3xture";
@@ -153,6 +160,7 @@
             };
         };
     </script>
+    
 </head>
 <body>
    <div class="header">Jett Sunwoo Han</div>
